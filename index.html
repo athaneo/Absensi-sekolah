@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bio-Metric Auth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="scanline"></div>
+    <div class="container">
+        <div class="status-bar">
+            <span class="dot"></span> LIVE SYSTEM ADAPTIVE
+        </div>
+        
+        <header>
+            <h1>SYSTEM<span>ACCESS</span></h1>
+            <p>AUTHORIZED PERSONNEL ONLY</p>
+        </header>
+
+        <form id="mainForm">
+            <div class="input-section">
+                <input type="text" id="nama" placeholder="NAMA LENGKAP" required>
+                <input type="tel" id="email" placeholder="PHONE_NUMBER (08...)" required>
+            </div>
+            
+            <div class="viewport-frame">
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+                
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+                <img id="preview" src="" style="display:none;">
+                
+                <div class="scanning-bar"></div>
+            </div>
+
+            <div class="controls">
+                <button type="button" id="btnCapture" class="btn-scan">INITIALIZE BIOMETRIC</button>
+                <div id="locText" class="loc-status">GPS: WAITING...</div>
+                <button type="submit" id="btnSubmit" class="btn-send">EXECUTE UPLOAD</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

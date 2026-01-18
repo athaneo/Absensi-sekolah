@@ -1,0 +1,136 @@
+:root {
+    --neon-blue: #00f2ff;
+    --neon-purple: #bc13fe;
+    --dark-space: #050505;
+}
+
+body {
+    background-color: var(--dark-space);
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Background Animasi Grid */
+body::before {
+    content: "";
+    position: absolute;
+    width: 200%; height: 200%;
+    background-image: linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    transform: perspective(500px) rotateX(60deg);
+    animation: moveGrid 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveGrid {
+    0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+    100% { transform: perspective(500px) rotateX(60deg) translateY(30px); }
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--neon-blue);
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+}
+
+/* Viewport Frame Kamera */
+.viewport-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3; /* Menjaga bentuk di semua layar */
+    background: #000;
+    margin: 15px 0;
+    border: 1px solid #333;
+}
+
+#video, #preview {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+/* Dekorasi Pojok (Corners) */
+.corner {
+    position: absolute; width: 15px; height: 15px;
+    border: 2px solid var(--neon-blue); z-index: 5;
+}
+.top-left { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+.top-right { top: -2px; right: -2px; border-left: 0; border-bottom: 0; }
+.bottom-left { bottom: -2px; left: -2px; border-right: 0; border-top: 0; }
+.bottom-right { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+/* Responsive Settings */
+/* Tampilan Mobile (HP) */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        height: 100vh;
+        max-width: none;
+        border: none;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    header h1 { font-size: 1.8rem; }
+    
+    .viewport-frame {
+        aspect-ratio: 1/1; /* Kotak sempurna di HP agar lebih fokus ke muka */
+    }
+}
+
+/* Tampilan PC / Tablet */
+@media (min-width: 601px) {
+    .container {
+        border-radius: 15px;
+        transform: scale(1.05);
+    }
+}
+
+/* Gaya Tombol */
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-scan {
+    background: transparent;
+    border: 1px solid var(--neon-purple);
+    color: var(--neon-purple);
+}
+
+.btn-scan:hover {
+    background: var(--neon-purple);
+    color: white;
+    box-shadow: 0 0 15px var(--neon-purple);
+}
+
+.btn-send {
+    background: var(--neon-blue);
+    border: none;
+    color: black;
+    font-weight: bold;
+}
+
+.loc-status {
+    font-size: 0.6rem;
+    text-align: center;
+    color: var(--neon-blue);
+    letter-spacing: 1px;
+}
