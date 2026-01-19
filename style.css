@@ -1,73 +1,99 @@
-/* Import Font Bergaya Vintage/Typewriter */
+/* Import Font Retro */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap');
 
 :root {
     --paper: #e8d5b5; /* Warna kertas tua */
-    --ink: #2c241d;   /* Warna tinta cokelat tua */
-    --accent: #8b4513; /* Warna aksen kayu/besi */
+    --ink: #1a1512;   /* Warna tinta (dipergelap agar Bold lebih kontras) */
+    --accent: #8b4513; /* Warna aksen kayu */
     --steel: #4a4a4a;
+    --btn-text: #000000; /* Hitam pekat untuk tombol */
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Hilangkan highlight biru di HP saat klik */
 }
 
 body {
-    background-color: #1a1a1a; /* Background luar gelap */
+    background-color: #1a1a1a;
     background-image: radial-gradient(#333 10%, transparent 10%);
     background-size: 20px 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; 
     min-height: 100vh;
     font-family: 'Courier Prime', monospace;
-    color: var(--ink);
-    padding: 10px;
+    padding: 15px 5px; /* Padding lebih kecil agar HP layar kecil tidak sesak */
 }
 
-/* Container Utama Ramping untuk HP */
+/* Container Vintage Ramping & Responsive */
 .container {
-    width: 100%;
-    max-width: 350px; /* Jauh lebih ramping agar pas di HP */
+    width: 98%; /* Mengikuti lebar layar */
+    max-width: 350px; /* Batas maksimal di PC */
     background-color: var(--paper);
-    border: 8px solid var(--accent);
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 0 4px var(--ink), 10px 10px 20px rgba(0,0,0,0.5);
+    border: 6px solid var(--accent); /* Border sedikit diperkecil agar tidak makan tempat */
+    border-radius: 4px;
+    padding: 15px;
+    box-shadow: 0 0 0 4px var(--ink), 10px 10px 25px rgba(0,0,0,0.7);
     position: relative;
+    overflow: hidden;
+    margin: auto;
 }
 
-/* Efek Tekstur Kertas Tua */
+/* Tekstur Kertas Tua */
 .container::before {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: url('https://www.transparenttextures.com/patterns/parchment.png');
-    opacity: 0.5;
+    opacity: 0.4;
     pointer-events: none;
+    z-index: 1;
+}
+
+header, form {
+    position: relative;
+    z-index: 2; /* Agar berada di atas tekstur kertas */
 }
 
 header {
     text-align: center;
     border-bottom: 2px double var(--ink);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding-bottom: 10px;
+}
+
+.school-logo {
+    width: 65px;
+    height: auto;
+    filter: sepia(0.8) grayscale(0.2);
+    margin-bottom: 8px;
+}
+
+.system-monitor {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 3px;
+    text-transform: uppercase;
 }
 
 header h1 {
     font-family: 'Special Elite', cursive;
-    font-size: 1.4rem;
-    text-transform: uppercase;
+    font-size: 1.3rem;
+    color: var(--ink);
+    line-height: 1.2;
 }
 
-header p {
-    font-size: 0.7rem;
+.sub-title {
+    font-size: 0.6rem;
     font-weight: bold;
+    opacity: 0.8;
 }
 
-/* Input Section */
+/* Input Section - BOLD & STABIL */
 .input-section {
     display: flex;
     flex-direction: column;
@@ -76,29 +102,36 @@ header p {
 
 input {
     width: 100%;
-    background: transparent;
+    background: rgba(0, 0, 0, 0.05); /* Sedikit gelap agar input terlihat */
     border: none;
     border-bottom: 2px solid var(--ink);
-    padding: 8px 5px;
-    font-family: 'Courier Prime', monospace;
-    font-weight: bold;
+    padding: 10px 5px;
+    font-family: 'bold';
+    font-weight: 700; /* Teks saat mengetik BOLD */
     color: var(--ink);
-    font-size: 0.9rem;
+    font-size: 16px; /* Mencegah auto-zoom iPhone */
+    border-radius: 0;
+}
+
+input::placeholder {
+    font-weight: 700; /* Placeholder BOLD */
+    color: rgba(44, 36, 29, 0.6);
+    text-transform: uppercase;
+    font-size: 0.75rem;
 }
 
 input:focus {
     outline: none;
-    background-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
 }
 
-/* Frame Kamera Bergaya Analog */
+/* Frame Kamera Analog */
 .viewport-frame {
     width: 100%;
-    aspect-ratio: 1/1; /* Kotak sempurna agar hemat ruang di layar HP */
+    aspect-ratio: 1 / 1;
     background: #000;
-    margin: 20px 0;
-    border: 10px solid var(--steel);
-    box-shadow: inset 0 0 15px #000;
+    margin: 15px 0;
+    border: 5px solid var(--steel);
     position: relative;
     overflow: hidden;
 }
@@ -107,99 +140,70 @@ input:focus {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: sepia(0.5) contrast(1.2); /* Efek foto lama */
+    filter: sepia(0.4) contrast(1.1);
 }
 
-/* Tombol Bergaya Mesin Tik / Industri Lama */
+/* Tombol Teks Hitam & Tebal */
 button {
     width: 100%;
     padding: 12px;
-    margin: 10px 0;
+    margin: 8px 0;
     font-family: 'Special Elite', cursive;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 900; 
     cursor: pointer;
     text-transform: uppercase;
-    transition: all 0.2s;
+    color: var(--btn-text) !important;
+    border-radius: 2px;
+    display: block;
 }
 
 .btn-scan {
-    background-color: var(--ink);
-    color: var(--paper);
-    border: 2px solid var(--ink);
-}
-
-.btn-scan:active {
-    background-color: var(--paper);
-    color: var(--ink);
+    background-color: #b0a080;
+    border: 3px outset #d0c0a0;
 }
 
 .btn-send {
-    background-color: #5c6341; /* Hijau Army Vintage */
-    color: white;
-    border: 3px outset #7a8256;
-    font-weight: bold;
+    background-color: #7a8256;
+    border: 3px outset #9aa276;
+    margin-bottom: 5px;
 }
 
-.btn-send:active {
+button:active {
     border-style: inset;
+    transform: translateY(1px);
 }
 
 .loc-status {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     text-align: center;
-    background: rgba(0,0,0,0.05);
-    padding: 5px;
+    background: rgba(0,0,0,0.08);
+    padding: 6px;
     border: 1px dashed var(--ink);
     font-weight: bold;
+    margin: 5px 0;
 }
 
-
-/* --- OPTIMASI MOBILE (TAMBAHKAN DI PALING BAWAH) --- */
-
-@media (max-width: 480px) {
-    body {
-        padding: 5px; /* Kurangi padding luar di layar kecil */
-        align-items: flex-start; /* Form mulai dari atas agar tidak terpotong keyboard */
-        padding-top: 20px;
-    }
-
-    .container {
-        max-width: 100%; /* Memenuhi lebar layar HP */
-        padding: 15px;   /* Padding dalam lebih ramping */
-        border-width: 5px; /* Kecilkan border kayu agar tidak sempit */
-    }
-
-    header h1 {
-        font-size: 1.2rem; /* Kecilkan teks judul */
-    }
-
-    input {
-        font-size: 16px; /* Mencegah auto-zoom pada iPhone saat input diklik */
-    }
-
-    .viewport-frame {
-        border-width: 6px; /* Tipiskan frame kamera */
-        margin: 15px 0;
-    }
-
-    button {
-        padding: 15px 10px; /* Perbesar area sentuh tombol (touch target) */
-        font-size: 0.85rem;
-    }
-
-    /* Tambahkan efek noise halus agar tekstur kertas lebih terasa di layar HP */
-    .container::after {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-        opacity: 0.1;
-        pointer-events: none;
-    }
+/* Scanning Line Animation */
+.scanning-bar {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 8px red;
+    top: 0;
+    z-index: 3;
+    animation: scanMove 3s infinite linear;
 }
 
-/* Mengatasi masalah tinggi layar yang sangat pendek */
-@media (max-height: 650px) {
-    header { margin-bottom: 10px; }
-    .viewport-frame { margin: 10px 0; }
+@keyframes scanMove {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+/* Perbaikan khusus layar sangat kecil */
+@media (max-width: 320px) {
+    .container { padding: 10px; border-width: 4px; }
+    header h1 { font-size: 1.1rem; }
+    button { font-size: 0.75rem; }
 }
