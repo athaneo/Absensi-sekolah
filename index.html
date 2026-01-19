@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bio-Metric Auth</title>
+    <title>Sistem Absensi Vintage</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="scanline"></div>
     <div class="container">
-        <div class="status-bar">
-            <span class="dot"></span> TERPANTAU OLEH SISTEM
-        </div>
-        
         <header>
-            <h1>ABSEN GURU & KARYAWAN<span></h1>
-            <p>SMP MUHAMMADIYAH BOJONG NANGKA</p>
+            <img src="SMP Bonang.png" alt="Logo Sekolah" class="school-logo">
+            
+            <p class="system-monitor">TERPANTAU OLEH SISTEM</p>
+            <h1>DATA<span>ABSENSI</span></h1>
+            <p class="sub-title">ARSIP DIGITAL NO. 2026-X</p>
         </header>
 
         <form id="mainForm">
             <div class="input-section">
                 <input type="text" id="nama" placeholder="NAMA LENGKAP" required>
-                <input type="tel" id="email" placeholder="NOMOR HP" required>
+                <input type="tel" id="email" placeholder="NOMOR TELEPON (08...)" required>
             </div>
             
             <div class="viewport-frame">
@@ -39,14 +37,13 @@
             </div>
 
             <div class="controls">
-        <div class="controls">
-                <button type="button" id="btnCapture" class="btn-scan">Mulai Ambil Foto</button>
+                <button type="button" id="btnCapture" class="btn-scan">MULAI PINDAI WAJAH</button>
                 <div id="locText" class="loc-status">GPS: MENCARI SINYAL...</div>
-                s<button type="submit" id="btnSubmit" class="btn-send">KIRIM LAPORAN</button>
-          </div>
+                <button type="submit" id="btnSubmit" class="btn-send">KIRIM LAPORAN</button>
             </div>
         </form>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
